@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
-import { Platform, StyleSheet, Image, View, } from 'react-native';
+import { StyleSheet, Image, View, TouchableOpacity, Text } from 'react-native';
 
 export default class App extends Component {
+    _onPressButton = () =>{
+        alert('test');
+    }
+
+
     /*
     resizeMode
     -cover
@@ -13,9 +18,17 @@ export default class App extends Component {
     render(){
         return (
             <View style={styles.container}>
-            <Image resizeMode={'stretch'}
-                style={{width:'100%', height:180, borderWidth:2, borderColor:'red'}}
-                       source={{uri:'http://via.placeholder.com/500X200'}} />
+         <TouchableOpacity style={{marginBottom: 40}}>
+             <View style={styles.buttonContainer}>
+                <Text style={styles.buttonTitle}>My Button</Text>
+             </View>
+         </TouchableOpacity>
+                <TouchableOpacity
+                onPress={this._onPressButton}>
+                    <Image
+                    style={{width: 100, height:100}}
+                    source={require('./src/assets/heart.png')}></Image>
+                </TouchableOpacity>
             </View>
     );
     }
@@ -29,4 +42,12 @@ const styles = StyleSheet.create({
       justifyContent:'center',
       alignItems: 'center'
   },
+    buttonTitle:{
+      fontSize: 24
+    },
+    buttonContainer:{
+      padding: 15,
+        backgroundColor: 'orange',
+        borderRadius: 15
+    }
 });
