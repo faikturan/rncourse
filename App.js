@@ -3,30 +3,37 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import Card  from './src/components/Card';
 
 export default class App extends Component {
-    onPressDetail = () =>{
-        alert('Detail');
+    state = {
+        name: 'Faik'
+    };
+
+    onChangeName = () =>{
+        this.setState({
+            name: 'Cem',
+        });
     };
     render(){
         return (
             <View style={styles.container}>
-                <Card text='Merhaba' backgroundColor='blue'/>
-                <Card text='UcuncuBinyil'/>
-                <Card text='React Native' backgroundColor='red' />
+                <View>
+                    <Text>{this.state.name}</Text>
+                </View>
                 <Button
-                    title='Detail'
+                    title='Change the name'
                 color='#000'
-                  onPress={this.onPressDetail}
+                  onPress={this.onChangeName}
             />
     </View>
     );
     }
 
 }
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+      flexDirection: 'column',
     backgroundColor: '#FFEB3B',
+      justifyContent:'center',
+      alignItems: 'center'
   },
 });
