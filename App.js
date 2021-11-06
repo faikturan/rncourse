@@ -4,25 +4,38 @@ import Card  from './src/components/Card';
 
 export default class App extends Component {
     state = {
-        name: 'Faik'
+        number: 0
     };
 
-    onChangeName = () =>{
+    onPressIncrease = () =>{
         this.setState({
-            name: 'Cem',
+            number: ++this.state.number,
+        });
+    };
+
+    onPressDecrease = () =>{
+        this.setState({
+            number: --this.state.number,
         });
     };
     render(){
         return (
             <View style={styles.container}>
                 <View>
-                    <Text>{this.state.name}</Text>
+                    <Text style={styles.number}>{this.state.number}</Text>
                 </View>
+                <View style = {styles.buttons}>
                 <Button
-                    title='Change the name'
+                    title='Artır'
                 color='#000'
-                  onPress={this.onChangeName}
+                  onPress={this.onPressIncrease}
             />
+                <Button
+                    title='Azalt'
+                    color='#000'
+                    onPress={this.onPressDecrease}
+                />
+                </View>
     </View>
     );
     }
@@ -36,4 +49,10 @@ const styles = StyleSheet.create({
       justifyContent:'center',
       alignItems: 'center'
   },
+    buttons:{
+      flexDirection: 'row'
+    },
+    number:{
+      fontSize: 44
+    }
 });
