@@ -1,34 +1,31 @@
 import React, {Component} from 'react';
-import { StyleSheet, Image, View, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, Image, View, Text,TextInput } from 'react-native';
 
 export default class App extends Component {
-    _onPressButton = () =>{
-        alert('test');
-    }
+    state = {
+        name: ''
+    };
 
+    _onChangeText = text =>{
+        this.setState({
+            name: text,
 
-    /*
-    resizeMode
-    -cover
-    -contain
-    -stretch
-    -repeat
-    -center
-     */
+        });
+    };
+
     render(){
+        const {name} = this.state;
+
         return (
             <View style={styles.container}>
-         <TouchableOpacity style={{marginBottom: 40}}>
-             <View style={styles.buttonContainer}>
-                <Text style={styles.buttonTitle}>My Button</Text>
-             </View>
-         </TouchableOpacity>
-                <TouchableOpacity
-                onPress={this._onPressButton}>
-                    <Image
-                    style={{width: 100, height:100}}
-                    source={require('./src/assets/heart.png')}></Image>
-                </TouchableOpacity>
+         <Text>{name}</Text>
+                <TextInput
+                autoCapitalize='none'
+                keyboardType='numeric'
+                value={name}
+                placeholder='Bir isim giriniz...'
+                onChangeText={this._onChangeText}
+                style={styles.myInput} />
             </View>
     );
     }
@@ -40,14 +37,13 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
     backgroundColor: '#FFEB3B',
       justifyContent:'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      paddingHorizontal: 10
   },
-    buttonTitle:{
-      fontSize: 24
-    },
-    buttonContainer:{
-      padding: 15,
-        backgroundColor: 'orange',
-        borderRadius: 15
+    myInput:{
+      width:'100%',
+        height:60,
+        borderWidth:2,
+        borderColor: 'gray'
     }
 });
