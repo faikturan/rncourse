@@ -1,31 +1,27 @@
 import React, {Component} from 'react';
-import { StyleSheet, Image, View, Text,TextInput } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, Dimensions} from 'react-native';
+
+
+const {width} = Dimensions.get('window');
 
 export default class App extends Component {
-    state = {
-        name: ''
-    };
-
-    _onChangeText = text =>{
-        this.setState({
-            name: text,
-
-        });
-    };
-
     render(){
-        const {name} = this.state;
-
         return (
             <View style={styles.container}>
-         <Text>{name}</Text>
-                <TextInput
-                autoCapitalize='none'
-                keyboardType='numeric'
-                value={name}
-                placeholder='Bir isim giriniz...'
-                onChangeText={this._onChangeText}
-                style={styles.myInput} />
+         <ScrollView
+             pagingEnabled={true}
+             horizontal={true}>
+             <Text style={styles.title}>1</Text>
+             <Text style={styles.title}>2</Text>
+             <Text style={styles.title}>3</Text>
+             <Text style={styles.title}>4</Text>
+             <Text style={styles.title}>5</Text>
+             <Text style={styles.title}>6</Text>
+             <Text style={styles.title}>7</Text>
+             <Text style={styles.title}>8</Text>
+             <Text style={styles.title}>9</Text>
+             <Text style={styles.title}>10</Text>
+         </ScrollView>
             </View>
     );
     }
@@ -40,10 +36,14 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       paddingHorizontal: 10
   },
-    myInput:{
-      width:'100%',
-        height:60,
+    title:{
+      backgroundColor: 'orange',
+        marginVertical: 30,
+        textAlign: 'center',
+        paddingVertical: 60,
+        borderColor: 'yellow',
         borderWidth:2,
-        borderColor: 'gray'
+        fontSize:36,
+        width
     }
 });
